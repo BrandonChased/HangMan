@@ -1,0 +1,24 @@
+﻿@{
+    ViewData["Title"] = "Start Game";
+}
+
+<div class="container mt-5">
+    <h1 class="display-2 text-success mb-5" id="index-header">
+        Welcome to Hangman
+    </h1>
+
+    <div class="card w-75 mx-auto p-3">
+        <h2 class="text-center text-danger card-head">Add a Word For Your Friends to Guess</h1>
+
+        <div class="card-body">
+            <form method="post" asp-action="StartGame" asp-controller="Home">
+                <div class="form-group">
+                    <label class="h2" for="Word">Enter Word:</label>
+                    <input type="password" class="form-control" name="Word" autofocus/>
+                    <p class="text-danger m-0">@ViewBag.Error</p>
+                </div>
+                <input class="btn btn-danger btn-lg mt-3" type="submit"/>
+            </form>
+        </div>
+    </div>
+</div>  

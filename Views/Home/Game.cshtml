@@ -1,0 +1,57 @@
+@{
+    ViewData["Title"] = "In Game";
+}
+
+<div class="container d-flex flex-column">
+    <h1 class="text-center text-light mt-5">
+        Enjoy The Game
+    </h1>
+
+    <div class="game d-flex justify-content-around text-light bg-success">
+        <img class="img-fluid" src="@ViewBag.Url" alt="@ViewBag.Url"/>
+        <div>
+            <h2>Letters Used</h2>
+            <div class="letter-bank d-flex flex-wrap justify-content-between p-3">
+                @{
+                    for(int i = 0; i <ViewBag.UsedLetters.Length; i++)
+                    {
+                        <p class="h2 mx-1">@ViewBag.UsedLetters[i]</p>
+                    }
+                }
+            </div>
+        </div>
+    </div>
+    @{
+        if(ViewBag.ShowWord != "")
+        {
+            <h2 class="text-danger text-center">The Word Was @ViewBag.ShowWord</h2>
+        }
+    }
+
+    <div class="d-flex justify-content-around text-light my-5 py-5 bg-black">
+        @{
+            for(int i = 0; i < ViewBag.Hint.Length; i++)
+            {
+                <p class="h2 text-weight-bold">@ViewBag.Hint[i]</p>
+            }
+        }
+    </div>
+
+    @{
+        if(ViewBag.Win =="Yes")
+        {
+            <a href="/" class="btn btn-success btn-lg">Play Again</a>
+        }
+        else
+        {
+            <form class="text-light" method="post" asp-action="Guess" asp-controller="Home">
+                <div class="form-group">
+                    <label for="Guess" class="h2">Guess a Word</label>
+                    <input class="form-control" name="Guess" autofocus maxlength="1"/>
+                </div>
+                <input  class="btn btn-danger btn-lg mt-3" type="submit"/>
+            </form>
+        }
+    }
+
+</div>
